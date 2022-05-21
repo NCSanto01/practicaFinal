@@ -2,39 +2,88 @@
 <html lang="en">
 <head class="mb-5">
   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 border">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item me-3">
+                <a class="nav-link active text-warning" aria-current="page" href="http://localhost:8080/index.html">Inicio</a>
+              </li>
+              <li class="nav-item me-3">
+                <a class="nav-link text-warning" href="http://localhost:8080/nosotros.html">Nosotros</a>
+              </li>
+              <li class="nav-item me-3">
+                <a class="nav-link text-warning" href="http://localhost:8080/informacion.html">Informacion</a>
+              </li>
 
-    
 
-    <h1 class="text-center pt-5 fw-bold">
-        MERCADO CRIPTO
-    </h1>
-    <div class="justify-content-center mb-5 d-flex mt-5">
-        <img class="mb-5" src="">
-    </div>
+
+            </ul>
+
+            <div class="pe-5 d-flex justify-content-end w-100" href ="http://localhost:8080/porfolio.html" role="button">
+              <a class="btn btn-outline-warning" href="http://localhost:8080/porfolio.html" >Portfolio</a>
+            </div>
+      </div>
+      </div>
+  </nav>
+<div class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white" style="background-image: url(resources/fondo.jpg);">
+  <h1 class="display-4 font-italic fs-1">
+  <img src="resources/LOGO.png" height="50">
+  </h1>
+  <p class="lead my-3">Accesing economy´s future</p>
+  </div>
 
 
 </head>
 <body class="p-5 mt-5">
+  <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_2e85b"></div>
+  <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BTCUSDT/?exchange=BINANCE" rel="noopener" target="_blank"><span class="blue-text">BTCUSDT Gráfico</span></a> por TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 980,
+  "height": 610,
+  "symbol": "BINANCE:BTCUSDT",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "dark",
+  "style": "1",
+  "locale": "es",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_2e85b"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
 
     <div class="mt-5 d-flex justify-content-center">
         <input class="me-4" id="symbol" placeholder="Símbolo de la moneda">
-        <button class="btn btn-primary me-4" onclick="addCoin()">
+        <button class="btn btn-outline-warning me-4" onclick="addCoin()">
             Añadir moneda
         </button>
 
-        <button class="btn btn-outline-primary " id="showAll" data-bs-toggle="button" onclick="alternar()">
+        <button class="btn btn-outline-warning " id="showAll" data-bs-toggle="button" onclick="alternar()">
             Mostrar Todas
         </button>
 
     </div>
 
     <div class=" d-flex justify-content-center p-5">
-        <table class="table table-striped mt-5">
+        <table class="table table-dark table-striped mt-5">
             <thead>
                 <tr>                  
                     <th class="text-center" scope="col">Símbolo</th>
