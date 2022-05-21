@@ -136,10 +136,7 @@ function genera_tabla() {
                 else{
                     celda.setAttribute("class","text-primary col-4 text-center");
                     textoCelda = document.createTextNode("+"+i+" %");
-
-
                 }
-
             }
             else if(i==info[1])
             {
@@ -156,9 +153,7 @@ function genera_tabla() {
   
       // agrega la hilera al final de la tabla (al final del elemento tblbody)
       tblBody.appendChild(hilera);
-    }
-  
-   
+    }  
     
   }
 
