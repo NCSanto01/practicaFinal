@@ -1,6 +1,7 @@
 let userName = document.getElementById("userName");
 let user;
 portafolio = {};
+historial = {};
 
 let getUser = async () => {
     let request = await fetch("/api/v1/user");
@@ -58,8 +59,20 @@ let getPortafolio = async () => {
         genera_tabla();
     }
     else{
-        console.log("Error get User")
+        console.log("Error get Portafolio")
     } 
+}
+
+let getHistorial = async () => {
+    user = await getUser();
+    let request = await fetch("/api/v1/orders/"+user.userId);
+    if(request.ok){
+        historial = await request.json();
+        genera_tabla_historial();
+    }
+    else{
+        console.log("Error get Historial")
+    }
 }
 
 let getPriceInfo = async (symbol) => {
@@ -124,4 +137,68 @@ async function genera_tabla() {
     
   }
 
-getPortafolio();
+  async function genera_tabla_historial() {
+    // Obtener la referencia del elemento tbody
+    tblBodyHistory=document.getElementById("tblBodyHistory");
+    tblBodyHistory.innerHTML=""; //Se vacía el tblBody para poder actualizarlo
+
+    // Crea las celdas
+    for (let op of historial) {
+        // Crea las hileras de la tabla
+        let hilera = document.createElement("tr");
+
+        //let price=parseFloat(sel.lastPrice).toFixed(2).toString();
+        let priceInfo = await getPriceInfo(op.symbol);
+        let valorUSDT = (op.amount * op.price).toFixed(2).toString() + " $";
+
+        console.log(valorUSDT);
+
+        let tipo = "Compra";
+        if(op.buy==0){
+            tipo = "Venta";
+        }
+
+        let info =[op.orderDate,op.symbol.replace('USDT',''),tipo, op.amount, op.price, valorUSDT];
+        
+        for (let i of info) {
+            // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+            // texto sea el contenido de <td>, ubica el elemento <td> al final
+            // de la hilera de la tabla
+            let celda = document.createElement("td");
+            celda.setAttribute("class","text-center")
+
+            let textoCelda = document.createTextNode("");
+            
+            if(i==info[2]){
+                if(i.includes("Venta")){
+                    celda.setAttribute("class","text-danger text-center");
+                    textoCelda = document.createTextNode(i);
+
+                }
+                else{
+                    celda.setAttribute("class","text-primary text-center");
+                    textoCelda = document.createTextNode(i);
+                }
+            }
+            
+            else{
+                textoCelda = document.createTextNode(i);
+            }
+            celda.appendChild(textoCelda);
+            hilera.appendChild(celda);
+        
+      }
+  
+      // agrega la hilera al final de la tabla (al final del elemento tblbody)
+      tblBodyHistory.appendChild(hilera);
+    }  
+    
+  }
+
+async function main(){
+    await getPortafolio();
+    await getHistorial();
+}
+
+main();
+

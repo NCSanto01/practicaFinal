@@ -150,11 +150,24 @@ function genera_tabla() {
             hilera.appendChild(celda);
         
       }
-  
+      let celdaOperar = document.createElement("td");
+      let btnOperar = document.createElement("button");
+      btnOperar.setAttribute("class","btn btn-warning");
+      btnOperar.setAttribute("onclick","operar("+"'"+sel.symbol+"')");
+      btnOperar.innerHTML="Operar";
+      celdaOperar.appendChild(btnOperar);
+      hilera.appendChild(celdaOperar);
+
       // agrega la hilera al final de la tabla (al final del elemento tblbody)
       tblBody.appendChild(hilera);
     }  
     
   }
+
+  function operar(symbol){
+      console.log(symbol);
+  }
+
+
 
   
