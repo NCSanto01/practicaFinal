@@ -52,64 +52,73 @@
     <body>
 
 
-          <div class="row mb-3">
-            <div class="col-md-4" style ="background-color: orange;">
-                <br>
-                        <div class="card-deck mb-3 text-center">
-                            <div class="card mb-4 box-shadow">
-                              <div class="card-header">
-                                <h4 class="my-0 font-weight-normal">Moneda</h4>
-                              </div>
-                              <div class="card-body">
-                                <h1 class="card-title pricing-card-title">------$</h1>
-                                <ul class="list-unstyled mt-3 mb-4">
-                                  <li>Precio en vivo</li>
-                                </ul>
-                              </div>
+          <div class="row mb-2">
+            <div class="col-md-6" style ="background-color: orange;">
+                <div class="row mb-2">
+                    <div class="col-md-6 justify-content-center " style ="background-color: orange;">
+                        <br>
+                        <label for="tidentification"style="color: white">Seleccione tipo de moneda:</label>
+                        <select name="select">
+                            <option value="value1">DOGECOIN</option>
+                            <option value="value2" selected="">BITCOIN</option>
+                            <option value="value3">PAELLA</option>
+                            </select>
+                        <br><br><br><br><br><br><br><br>
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-header">
+                              <div class="d-flex flex-row justify-content-around">
+                                <div class="p-2">
+                                  <h4 class="my-0 font-weight-normal">Cantidad</h4>
+                                </div>
+                              </div>  
                             </div>
-                            <div>
-                                <div class="card mb-4 box-shadow">
-                                    <div class="card-header">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-body">
-                                            <div class="d-flex flex-row justify-content-around">
-                                              <div class="p-2">
-                                                <button type="button" class="btn btn-lg btn-block btn-danger justify-content-center">VENDER</button>                                
-                                              </div>
-                                              <div class="p-2">                              
-                                                <button type="button" class="btn btn-lg btn-block btn-success justify-content-center">COMPRAR</button>
-                                              </div>
-                                            </div>
-                                          </div>
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="card mb-4 box-shadow">
-                              <div class="card-header">
-                                <h4 class="my-0 font-weight-normal">Cantidad</h4>
-                              </div>
-                              <div class="card-body">
-                                <h1 class="card-title pricing-card-title">
-                                    <form>
-                                    <div class="form-group">
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca Cantidad">
-                                    </div> 
-                                    </form>
-                                </h1>
-
-                                <ul class="list-unstyled mt-3 mb-4">
-                                  <li>Esto equivale a:</li>
-                                </ul>
-                                <h5>USD disponible: </h5>
-                                <br>
-                                <button type="button" class="btn btn-lg btn-block btn-primary">Confirmar</button>
+                            <div class="card-body">
+                              <div class="d-flex flex-row justify-content-around">
+                                <div class="p-2">
+                                  <button type="button" class="btn btn-lg btn-block btn-danger justify-content-center">-</button>                                
+                                </div>
+                                <div class="p-2">
+                                  <h1 class="card-title pricing-card-title">$0 <small class="text-muted"></small></h1>
+                                </div>
+                                <div class="p-2">                              
+                                  <button type="button" class="btn btn-lg btn-block btn-success justify-content-center">+</button>
+                                </div>
                               </div>
                             </div>
                           </div>
+                    </div>
+                    <div class="col-md-6" style ="background-color: orange;">
+                      <br>
+                      <label for="tidentification">Seleccione tipo de operacion:</label>
+                        <select name="select">
+                            <option value="value1">COMPRAR</option>
+                            <option value="value2" selected="">VENDER</option>
+                            </select>
+                        <br><br><br><br><br><br><br><br>
+                        <div class="card mb-4 box-shadow">
+                          <div class="card-header">
+                            <div class="d-flex flex-row justify-content-around">
+                              <div class="p-2">
+                                <h4 class="my-0 font-weight-normal">Precio</h4>
+                              </div>
+                            </div>  
+                          </div>
+                            <div class="card-body">
+                              <div class="d-flex flex-row justify-content-around">
+                                <div class="p-2">
+                                  <h1 class="card-title pricing-card-title">€ <small class="text-muted"> mo</small></h1>
+                                </div>
+                                <div class="p-2">
+                                  <h1 class="card-title pricing-card-title">$ <small class="text-muted"> mo</small></h1>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+        
             </div>
-                           
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="card flex-md-row mb-4 box-shadow h-md-250">
                 <div class="tradingview-widget-container">
                     <div id="tradingview_37749"></div>
@@ -120,8 +129,8 @@
                     <script type="text/javascript">
                     new TradingView.widget(
                     {
-                    "width": 1080,
-                    "height": 780,
+                    "width": 780,
+                    "height": 580,
                     "symbol": "OANDA:XAUUSD",
                     "interval": "D",
                     "timezone": "Etc/UTC",
@@ -137,7 +146,6 @@
                     </script>
             </div>
           </div>
-          
           
 
         
