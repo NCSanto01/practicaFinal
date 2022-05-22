@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import PAT.practicaFinal.model.CoinModel;
 import PAT.practicaFinal.model.OrderModel;
 import PAT.practicaFinal.service.OrderService;
 
@@ -16,7 +17,7 @@ import PAT.practicaFinal.service.OrderService;
 @RequestMapping("/api/v1")
 public class OrderController {
     
-    String symbol = "BTCUSDT";
+    String symbol = "";
 
     @Autowired
     private OrderService service;
@@ -37,8 +38,11 @@ public class OrderController {
     }
 
     @PostMapping("/symbol/set")
-    public void setSymbol(@RequestBody String symbol){
-        this.symbol = symbol;
+    public void setSymbol(@RequestBody CoinModel coin){
+
+        System.out.print("Symbol:");
+        System.out.println(coin.toString());
+        this.symbol = coin.getSymbol();
     }
 
     @GetMapping("/symbol/get")

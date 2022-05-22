@@ -164,8 +164,36 @@ function genera_tabla() {
     
   }
 
-  function operar(symbol){
-      console.log(symbol);
+  async function operar(symbol){
+    console.log(symbol);
+
+    await postSymbol(symbol);
+  }
+
+  let postSymbol = async(symbol) => {
+    let request = await fetch("/api/v1/symbol/set", {
+        method: 'POST',
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            symbol:symbol,
+            logo:"img"
+        }),
+        dataType: "json"
+    });
+
+    if(request.ok){
+        console.log("Success!");
+        //console.log(await request.json());
+
+        
+    }
+    else{
+        console.log("Error");
+    }
+    
   }
 
 

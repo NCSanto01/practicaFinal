@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning border fixed-top">
         <div class="container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -67,10 +67,10 @@
                         <div class="card-deck mb-3 text-center">
                             <div class="card mb-4 box-shadow">
                               <div class="card-header">
-                                <h4 class="my-0 font-weight-normal">Moneda</h4>
+                                <h4 id="symbolText" class="my-0 font-weight-normal">Moneda</h4>
                               </div>
                               <div class="card-body">
-                                <h1 class="card-title pricing-card-title">------$</h1>
+                                <h1 id="priceText" class="card-title pricing-card-title">------$</h1>
                                 <ul class="list-unstyled mt-3 mb-4">
                                   <li>Precio en vivo</li>
                                 </ul>
@@ -84,10 +84,10 @@
                                         <div class="card-body">
                                             <div class="d-flex flex-row justify-content-around">
                                               <div class="p-2">
-                                                <button type="button" class="btn btn-lg btn-block btn-danger justify-content-center">VENDER</button>                                
+                                                <button type="button" class="btn btn-lg btn-block btn-outline-danger justify-content-center" data-toggle="button" aria-pressed="false" autocomplete="off">VENDER</button>                                
                                               </div>
                                               <div class="p-2">                              
-                                                <button type="button" class="btn btn-lg btn-block btn-success justify-content-center">COMPRAR</button>
+                                                <button type="button" class="btn btn-lg btn-block btn-outline-success justify-content-center">COMPRAR</button>
                                               </div>
                                             </div>
                                           </div>
@@ -121,25 +121,10 @@
             <div class="col-md-8">
             <div class="tradingview-widget-container">
               <div id="tradingview_206ee"></div>
-              <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span class="blue-text">BTCUSD Gráfico</span></a> por TradingView</div>
+              <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"><span id = "graphFooter" class="blue-text">BTCUSD Gráfico</span></a> por TradingView</div>
               <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-              <script type="text/javascript">
-              new TradingView.widget(
-              {
-              "width": 1045,
-              "height": 780,
-              "symbol": "BITSTAMP:BTCUSD",
-              "interval": "D",
-              "timezone": "Etc/UTC",
-              "theme": "light",
-              "style": "1",
-              "locale": "es",
-              "toolbar_bg": "#f1f3f6",
-              "enable_publishing": false,
-              "allow_symbol_change": true,
-              "container_id": "tradingview_206ee"
-            }
-              );
+              <script type="text/javascript" src="resources/dibujaGrafico.js">
+              
               </script>
             </div>
           </div>
