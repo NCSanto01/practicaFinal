@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Iterable<OrderModel> retrieveByUserIdSymbol(String userId, String symbol){
-        String query = "SELECT * FROM ORDERS WHERE USER_ID="+userId+" AND SYMBOL='"+ symbol + "' ORDER BY ORDER_DATE";
+        String query = "SELECT * FROM ORDERS WHERE USER_ID="+userId+" AND SYMBOL='"+ symbol + "' ORDER BY ORDER_DATE DESC";
 
         Iterable<OrderModel> orders = template.query(
             query,
