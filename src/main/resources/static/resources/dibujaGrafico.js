@@ -6,6 +6,9 @@ let getSymbolGrafico = async () => {
     let request = await fetch("/api/v1/symbol/get");
     if(request.ok){
         symbolGrafico = await request.text();
+        if(symbolGrafico==""){
+            symbolGrafico = "BTCUSDT";
+        }
         symbolText.innerHTML=symbolGrafico;
         console.log(symbolGrafico);
     }
