@@ -30,6 +30,7 @@ let getBalance = async() => {
     if(request.ok){
         balanceInfo = await request.json();
         console.log(balanceInfo);
+        usdAccount = balanceInfo[0];
         balance = balanceInfo[0].amount;
         balanceText.innerHTML = "USD disponible: "+balance + " $";
     }
@@ -44,8 +45,18 @@ let getAccount = async(symbol) => {
     if(request.ok){
         let accounts = await request.json();
         account = accounts[0];
-        console.log(account);
-        coinBalance = account.amount;
+        if(account!=undefined){
+            console.log(account);
+            coinBalance = account.amount;
+        }
+        else{
+            coinBalance = 0;
+            account={accountId:undefined,
+                userId:user.userId,
+                symbol:symbol,
+                amount:0}
+        }
+        
     }
     else{
         console.log("Error Get Balance");
@@ -53,21 +64,26 @@ let getAccount = async(symbol) => {
     
 }
 
-let symbol;
+
+let symbol = "BTCUSDT";
 let price;
-let buy = 1;
+let buy = 0;
 let user;
 let balance;
 let equivalencia;
 let cantidad;
 let coinBalance;
-let account; 
+let account;
+let usdAccount; 
 
 let getSymbol = async () => {
     let symbolText = document.getElementById("symbolText");
     let request = await fetch("/api/v1/symbol/get");
     if(request.ok){
         symbol = await request.text();
+        if(symbol==undefined || symbol== null || symbol==""){
+            symbol = "BTCUSDT";
+        }
         symbolText.innerHTML=symbol;
         console.log(symbol);
     }
@@ -178,12 +194,44 @@ let updateAccount = async() => {
 
 }
 
+let updateBalance = async() => {
+    let updatedBalance;
+    if(buy==1){
+        updatedBalance = balance - equivalencia;
+    }
+    else{
+        updatedBalance = balance + equivalencia;
+    }
+    let request = await fetch("/api/v1/account/update", {
+        method:'PUT',
+        credentials:"same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            accountId:usdAccount.accountId,
+            userId:user.userId,
+            symbol:"USDT",
+            amount:updatedBalance
+        }),
+        dataType: "json"
+    });
+    if(request.ok){
+        console.log("Success!");
+        console.log(await request.json());  
+    }
+    else{
+        console.log("Error");
+    }
+}
+
 async function confirmar(){
     if(!isNaN(cantidad)){
         if(buy==1){
             if(balance>=equivalencia){
                 await postOrder();
                 await updateAccount();
+                await updateBalance();
                 await getBalance();
                 await getAccount(symbol);
             }
@@ -195,6 +243,7 @@ async function confirmar(){
             if(coinBalance>=cantidad){
                 await postOrder();
                 await updateAccount();
+                await updateBalance();
                 await getBalance();
                 await getAccount(symbol);
             }
