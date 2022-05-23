@@ -168,6 +168,7 @@ function genera_tabla() {
     console.log(symbol);
 
     await postSymbol(symbol);
+    window.location.href="operaciones.html";
   }
 
   let postSymbol = async(symbol) => {
@@ -195,6 +196,8 @@ function genera_tabla() {
     }
     
   }
+
+
 
 
 
