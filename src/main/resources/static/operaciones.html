@@ -85,13 +85,9 @@
                                             <div class="d-flex flex-row justify-content-around">
                                               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                                                <label class="btn btn-outline-danger" for="btnradio1">VENDER</label>
-                                              
-                                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                                <label class="btn " for="btnradio2"></label>
-                                              
+                                                <label class="btn btn-outline-danger text-center" id="btnVender" style="width: 101px" for="btnradio1" onclick="Sell()">VENDER</label>            
                                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                                                <label class="btn btn-outline-success" for="btnradio3">COMPRAR</label>
+                                                <label class="btn btn-outline-success text-center" id="btnComprar" style="width: 101px" for="btnradio3" onclick="Buy()">COMPRAR</label>
                                               </div>
                                             </div>
                                           </div>
@@ -106,17 +102,17 @@
                                 <h1 class="card-title pricing-card-title">
                                     <form>
                                     <div class="form-group">
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Introduzca Cantidad">
+                                      <input type="email" class="form-control" id="cantidad" aria-describedby="emailHelp" placeholder="Introduzca Cantidad">
                                     </div> 
                                     </form>
                                 </h1>
 
                                 <ul class="list-unstyled mt-3 mb-4">
-                                  <li>Esto equivale a:</li>
+                                  <li id="equivalencia">Esto equivale a:</li>
                                 </ul>
-                                <h5>USD disponible: </h5>
+                                <h5 id="balance">USD disponible: </h5>
                                 <br>
-                                <button type="button" class="btn btn-lg btn-block btn-primary">Confirmar</button>
+                                <button onclick="confirmar()" type="button" class="btn btn-lg btn-block btn-primary">Confirmar</button>
                               </div>
                             </div>
                           </div>

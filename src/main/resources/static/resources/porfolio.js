@@ -71,46 +71,48 @@ async function genera_tabla() {
 
     // Crea las celdas
     for (let cuenta of portafolio) {
-        // Crea las hileras de la tabla
-        let hilera = document.createElement("tr");
+        if(cuenta.symbol!="USDT"){
+            // Crea las hileras de la tabla
+            let hilera = document.createElement("tr");
 
-        //let price=parseFloat(sel.lastPrice).toFixed(2).toString();
-        let priceInfo = await getPriceInfo(cuenta.symbol);
-        let valorUSDT = (cuenta.amount * priceInfo.price).toFixed(2).toString() + " $";
+            //let price=parseFloat(sel.lastPrice).toFixed(2).toString();
+            let priceInfo = await getPriceInfo(cuenta.symbol);
+            let valorUSDT = (cuenta.amount * priceInfo.price).toFixed(2).toString() + " $";
 
-        let info =[cuenta.symbol.replace('USDT',''),cuenta.amount, valorUSDT, priceInfo.priceChangePercent + " %" ];
-        
-        for (let i of info) {
-            // Crea un elemento <td> y un nodo de texto, hace que el nodo de
-            // texto sea el contenido de <td>, ubica el elemento <td> al final
-            // de la hilera de la tabla
-            let celda = document.createElement("td");
-            celda.setAttribute("class","text-center")
-
-            let textoCelda = document.createTextNode("");
+            let info =[cuenta.symbol.replace('USDT',''),cuenta.amount, valorUSDT, priceInfo.priceChangePercent + " %" ];
             
-            if(i==info[3]){
-                if(i.includes("-")){
-                    celda.setAttribute("class","text-danger text-center");
-                    textoCelda = document.createTextNode(i);
+            for (let i of info) {
+                // Crea un elemento <td> y un nodo de texto, hace que el nodo de
+                // texto sea el contenido de <td>, ubica el elemento <td> al final
+                // de la hilera de la tabla
+                let celda = document.createElement("td");
+                celda.setAttribute("class","text-center")
 
+                let textoCelda = document.createTextNode("");
+                
+                if(i==info[3]){
+                    if(i.includes("-")){
+                        celda.setAttribute("class","text-danger text-center");
+                        textoCelda = document.createTextNode(i);
+
+                    }
+                    else{
+                        celda.setAttribute("class","text-primary text-center");
+                        textoCelda = document.createTextNode("+"+i);
+                    }
                 }
+                
                 else{
-                    celda.setAttribute("class","text-primary text-center");
-                    textoCelda = document.createTextNode("+"+i);
+                    textoCelda = document.createTextNode(i);
                 }
-            }
+                celda.appendChild(textoCelda);
+                hilera.appendChild(celda);
             
-            else{
-                textoCelda = document.createTextNode(i);
             }
-            celda.appendChild(textoCelda);
-            hilera.appendChild(celda);
-        
-      }
-  
-      // agrega la hilera al final de la tabla (al final del elemento tblbody)
-      tblBody.appendChild(hilera);
+    
+            // agrega la hilera al final de la tabla (al final del elemento tblbody)
+            tblBody.appendChild(hilera);
+        }
     }  
     
   }

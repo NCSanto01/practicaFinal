@@ -31,6 +31,8 @@ public class AccountController {
 
     @PutMapping("/account/update")
     public ResponseEntity<AccountModel> update(@RequestBody AccountModel editAccount){
+        System.out.println("ACCCOUNNNNTTTTTTTTTTTTTTTTTTTTTTT");
+        System.out.print(editAccount.getAccountId());
         return ResponseEntity.ok().body(service.update(editAccount));
     }
 }
